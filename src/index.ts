@@ -10,8 +10,6 @@ const PORT = process.env.SERVER_PORT || SERVER_PORT;
   app.set("port", PORT);
   const appName = process.env.APP_NAME || APP_NAME_DEFAULT;
 
-  // await MySQLClient.sync();
-
   app.listen(PORT, () => {
     LogClient.info(
       `${appName} is running at http://localhost:${PORT} in ${process.env.NODE_ENV || NodeEnv.Development} mode`

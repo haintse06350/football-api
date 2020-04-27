@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-
+export const { Op } = Sequelize;
 export const MySQLClient = new Sequelize(
   process.env.DB_NAME || "",
   process.env.DB_USER || "",

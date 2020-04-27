@@ -10,7 +10,6 @@ export interface ITables {
   Transfermarkt: def.TransfermarktModel;
   PlayersValueHistory: def.PlayersValueHistoryModel;
   Currency: def.CurrencyModel;
-  Association: def.AssociationModel;
   WyscoutTeams: def.WyscoutTeamsModel;
   WyscoutPlayers: def.WyscoutPlayersModel;
   MatchDetail: def.MatchDetailModel;
@@ -21,7 +20,6 @@ export interface ITables {
   TeamMetaData: def.TeamMetaDataModel;
   TeamsTransfermarkt: def.TeamsTransfermarktModel;
   PlayersTransfertsHistory: def.PlayersTransfertsHistoryModel;
-  CoachesTeams: def.CoachesTeamsModel;
   PlayersAgents: def.PlayersAgentsModel;
   PlayersBestPosition: def.PlayersBestPositionModel;
 }
@@ -33,7 +31,6 @@ export const getModels = (seq: sequelize.Sequelize): ITables => {
     // Users friendly
     Users: seq.import(path.join(__dirname, "users")),
     Currency: seq.import(path.join(__dirname, "currency")),
-    Association: seq.import(path.join(__dirname, "association")),
 
     // Third party data
     TeamsTransfermarkt: seq.import(path.join(__dirname, 'teams_tranfersmarkt')),
@@ -49,7 +46,6 @@ export const getModels = (seq: sequelize.Sequelize): ITables => {
     PlayersMatchesDetails: seq.import(path.join(__dirname, 'players_matches_details')),
     TeamMetaData: seq.import(path.join(__dirname, 'team_meta_data')),
     PlayersTransfertsHistory: seq.import(path.join(__dirname, 'players_transferts_history')),
-    CoachesTeams: seq.import(path.join(__dirname, 'coaches_teams')),
     PlayersAgents: seq.import(path.join(__dirname, 'players_agents')),
     PlayersBestPosition: seq.import(path.join(__dirname, 'players_best_position')),
 

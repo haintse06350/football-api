@@ -6,4 +6,4 @@ export enum NodeEnv {
   Production = "production"
 }
 
-export const APP_NAME_DEFAULT = "template";
+export const APP_NAME_DEFAULT = "Football";

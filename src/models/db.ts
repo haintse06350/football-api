@@ -232,12 +232,6 @@ export interface TeamsStatsAttribute {
   points: number;
 }
 
-export interface AssociationAttribute {
-  id: number,
-  playerIdWhoscored: string,
-  playerIdTransfermarkt: string
-}
-
 export interface WyscoutTeamsAttribute {
   id: number,
   teamId: number,
@@ -568,9 +562,6 @@ export interface UsersModel extends Sequelize.Model<UsersInstance, UsersAttribut
 
 export interface TransfermarktInstance extends Sequelize.Instance<TransfermarktAttribute>, TransfermarktAttribute { }
 export interface TransfermarktModel extends Sequelize.Model<TransfermarktInstance, TransfermarktAttribute> { }
-
-export interface AssociationInstance extends Sequelize.Instance<AssociationAttribute>, AssociationAttribute { }
-export interface AssociationModel extends Sequelize.Model<AssociationInstance, AssociationAttribute> { }
 
 export interface WyscoutTeamsInstance extends Sequelize.Instance<WyscoutTeamsAttribute>, WyscoutTeamsAttribute { }
 export interface WyscoutTeamsModel extends Sequelize.Model<WyscoutTeamsInstance, WyscoutTeamsAttribute> { }
