@@ -56,7 +56,7 @@ const basicAuth = (req, res, next) => {
   }
 };
 
-app.get('/', basicAuth);
+// app.get('/', basicAuth);
 
 // Allow to generate anonymous JWT for new user
 app.post("/auth/anonymous", AuthCtrl.anonymous);

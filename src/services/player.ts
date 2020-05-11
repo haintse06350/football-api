@@ -68,3 +68,21 @@ export const list = async (params: any, ctx: any) => {
 
   return players;
 };
+
+export const search = async (params: any, ctx: any) => {
+  const { seasonNameStr, playerName, playerId } = params;
+  let seasonName = parseInt(seasonNameStr, 10);
+  if (!seasonNameStr) seasonName = 2018;
+
+  const player = await MySQLClient.query(`SELECT * FROM players_transfermarkt WHERE playerId = ${playerId}`, { type: MySQLClient.QueryTypes.SELECT });
+
+  return player;
+}
+
+export const autoComplete = async (params: any, ctx: any) => {
+  const { q } = params;
+
+  const players = await MySQLClient.query(`SELECT distinct name, playerId, image FROM players_transfermarkt where name like '%${q}%'`, { type: MySQLClient.QueryTypes.SELECT });
+
+  return players;
+}
