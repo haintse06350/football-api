@@ -17,7 +17,6 @@ import { NodeEnv } from "./constants/server";
 const app = express();
 const compare = require('tsscmp');
 const auth = require('basic-auth');
-
 // Express configuration
 app.set("trust proxy", process.env.USE_PROXY === "true");
 

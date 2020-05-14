@@ -87,3 +87,4 @@ resources/
 !test/resources/
 ligue1.json
 output*
+/node_modules

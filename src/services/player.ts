@@ -82,7 +82,7 @@ export const search = async (params: any, ctx: any) => {
 export const autoComplete = async (params: any, ctx: any) => {
   const { q } = params;
 
-  const players = await MySQLClient.query(`SELECT distinct name, playerId, image FROM players_transfermarkt where name like '%${q}%'`, { type: MySQLClient.QueryTypes.SELECT });
+  const players = await MySQLClient.query(`SELECT distinct name, playerId, image FROM players_transfermarkt where name like '%${q}%' limit 15`, { type: MySQLClient.QueryTypes.SELECT });
 
   return players;
 }
