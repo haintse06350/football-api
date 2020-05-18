@@ -75,14 +75,20 @@ export const search = async (params: any, ctx: any) => {
   if (!seasonNameStr) seasonName = 2018;
 
   const player = await MySQLClient.query(`SELECT * FROM players_transfermarkt WHERE playerId = ${playerId}`, { type: MySQLClient.QueryTypes.SELECT });
+  const teamId = await MySQLClient.query(`SELECT transfermarktTeamId, whoscoredTeamId from teams_transfermarkt where name = '${player[0].teamName}'`, { type: MySQLClient.QueryTypes.SELECT });
+  player[0].teamId = teamId.length > 0 ? teamId[0].transfermarktTeamId : null;
+  player[0].whoscoredTeamId = teamId.length > 0 ? teamId[0].whoscoredTeamId : null;
+  const tournamentId = await MySQLClient.query(`SELECT tournamentName, tournamentRegionName, weight FROM raw_players_history WHERE teamId = ${player[0].whoscoredTeamId} LIMIT 1`, { type: MySQLClient.QueryTypes.SELECT });
+  player[0].tournamentName = tournamentId.length > 0 ? tournamentId[0].tournamentName : null;
+  player[0].tournamentRegionName = tournamentId.length > 0 ? tournamentId[0].tournamentRegionName : null;
+  player[0].weight = tournamentId.length > 0 ? tournamentId[0].weight : null;
 
-  return player;
+  return player[0];
 }
 
 export const autoComplete = async (params: any, ctx: any) => {
   const { q } = params;
 
   const players = await MySQLClient.query(`SELECT distinct name, playerId, image FROM players_transfermarkt where name like '%${q}%' limit 15`, { type: MySQLClient.QueryTypes.SELECT });
-
   return players;
 }
